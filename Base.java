@@ -1,9 +1,10 @@
 /**
- * Base
+
+ * Base of the code for now.
  */
 public class Base {
 
-    public void feature(){
-        
+    public static void main(String[] args) {
+        System.out.println("Main Issues");
     }
 }
