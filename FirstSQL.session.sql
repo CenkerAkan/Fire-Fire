@@ -1,0 +1,2 @@
+SHOW DATABASES;
+INSERT INTO student(name) VALUES('Utku');

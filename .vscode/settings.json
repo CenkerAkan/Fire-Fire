@@ -1,0 +1,21 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "FireAndFire",
+            "username": "sqluser",
+            "password": "password",
+            "name": "FirstSQL"
+        }
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\MEHMETAKAN\\Downloads\\mysql-connector-java-8.0.28\\mysql-connector-java-8.0.28.jar"
+    ]
+}
