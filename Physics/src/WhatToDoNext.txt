@@ -1,0 +1,14 @@
+Things to do in main:
+    Login page adjustment:
+        Add sign up button.
+        Add Login button.
+    Database connection and methods in signing up.
+    Move the background picture into the project and update the paths.
+
+Things to do in physics:
+    Movement of the character object.
+    Meelee attack ability.
+    Boxes with limited hp.
+    Extra: Assigning a profile to the character and updating its
+    outlook when the character turns to another direction.
+    Extra: Shooting. 
