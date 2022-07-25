@@ -23,7 +23,7 @@ public class Ground extends JPanel{
         this.myHero=myHero;
         this.setPreferredSize(new Dimension(2048,1080));
         //this.setLayout(new BorderLayout());
-        this.createComponents();
+        //this.createComponents();
         myHero.setNewLocation(1000, 500);
         setFocusable(true);
     }
@@ -63,9 +63,8 @@ public class Ground extends JPanel{
         public void keyTyped(KeyEvent e) {}
         public void keyReleased(KeyEvent e) {}
     }
-    public void paintComponent (Graphics page)
-    {
-       super.paintComponent (page);
-       myHero.currentImage.paintIcon (this, page, myHero.x, myHero.y);
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(myHero.currentImage, myHero.x, myHero.y, this); // see javadoc for more info on the parameters            
     }
 }

@@ -24,12 +24,13 @@ public class Hero extends JPanel{
     private final int STARTING_ORDINATE =0;
     protected int x= STARTING_APSIS;
     protected int y= STARTING_ORDINATE;
-    protected ImageIcon currentImage;
-    protected static ImageIcon up= new ImageIcon("up.png");;
-    protected static ImageIcon down= new ImageIcon("down.png");;
-    protected static ImageIcon left= new ImageIcon("left.png");;
-    protected static ImageIcon right= new ImageIcon("right.png");;
+    protected BufferedImage currentImage;
+    protected static BufferedImage up;
+    protected static BufferedImage down;
+    protected static BufferedImage left;
+    protected static BufferedImage right;
     public Hero(){
+        ImagePanel();
         currentImage = down;
         setPreferredSize (new Dimension(63,46));
     }
@@ -38,13 +39,19 @@ public class Hero extends JPanel{
         y=newY;
         repaint();
     }
-    public void setNewImageIcon(ImageIcon icon){
-        this.currentImage = icon;
-        repaint();
-    }
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        currentImage.paintIcon(this, g, x, y); // see javadoc for more info on the parameters            
+        g.drawImage(currentImage, 0, 0, this); // see javadoc for more info on the parameters            
     }
+    public void ImagePanel() {
+        try {                
+           up = ImageIO.read(new File("up.png"));
+           down = ImageIO.read(new File("down.png"));
+           left = ImageIO.read(new File("left.png"));
+           right = ImageIO.read(new File("right.png"));
+        } catch (IOException ex) {
+            System.out.println("Problem in image paths");
+        }
+     }
 }
