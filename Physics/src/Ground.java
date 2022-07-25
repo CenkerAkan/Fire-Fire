@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.MouseInputListener;
+
 import java.awt.*;
 import java.awt.event.*;
 /**
@@ -20,6 +22,7 @@ public class Ground extends JPanel{
     public Ground(Hero myHero){
         super();
         addKeyListener(new movementListener(this));
+        addMouseMotionListener(new MouseAim());
         this.myHero=myHero;
         this.setPreferredSize(new Dimension(2048,1080));
         //this.setLayout(new BorderLayout());
@@ -41,20 +44,20 @@ public class Ground extends JPanel{
         public void keyPressed(KeyEvent event) {
             switch (event.getKeyCode()) {
                 case KeyEvent.VK_UP:
-                    myGround.myHero.currentImage = myGround.myHero.up;
+                    //myGround.myHero.currentImage = myGround.myHero.up;
                     myGround.myHero.y -= JUMP;
                     repaint();
                     break;
                 case KeyEvent.VK_DOWN:
-                    myHero.currentImage = myHero.down;
+                    //myHero.currentImage = myHero.down;
                     myHero.y += JUMP;
                     break;
                 case KeyEvent.VK_LEFT:
-                    myHero.currentImage = myHero.left;
+                    //myHero.currentImage = myHero.left;
                     myHero.x -= JUMP;
                     break;
                 case KeyEvent.VK_RIGHT:
-                    myHero.currentImage = myHero.right;
+                    //myHero.currentImage = myHero.right;
                     myHero.x += JUMP;
                     break;
             }
@@ -63,6 +66,18 @@ public class Ground extends JPanel{
         public void keyTyped(KeyEvent e) {}
         public void keyReleased(KeyEvent e) {}
     }
+    public class MouseAim implements MouseMotionListener, Runnable{
+
+        public void run() {
+            // TODO Auto-generated method stub
+            
+        }
+        public void mouseMoved(MouseEvent e) {
+            System.out.println("Mouse is moved to x:"+e.getXOnScreen()+" y:"+e.getYOnScreen());   
+        }
+        public void mouseDragged(MouseEvent e){}
+    }
+    
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(myHero.currentImage, myHero.x, myHero.y, this); // see javadoc for more info on the parameters            
