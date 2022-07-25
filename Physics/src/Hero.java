@@ -22,10 +22,10 @@ import javax.swing.JPanel;
 public class Hero extends JPanel{
     private final int STARTING_APSIS =0;
     private final int STARTING_ORDINATE =0;
-    protected int x= STARTING_APSIS;
-    protected int y= STARTING_ORDINATE;
-    protected int gunsX = STARTING_APSIS+63;
-    protected int gunsY = STARTING_ORDINATE-37;
+    protected double x= STARTING_APSIS;
+    protected double y= STARTING_ORDINATE;
+    protected double velX = 0;
+    protected double velY =0;
     protected BufferedImage currentImage;
     protected static BufferedImage up;
     protected static BufferedImage down;

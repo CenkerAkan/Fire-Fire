@@ -6,9 +6,10 @@ Things to do in main:
     Move the background picture into the project and update the paths.
 
 Things to do in physics:
-    Movement of the character object.
+    Movement of the character object. ✓
+    Need smooth movement
     Meelee attack ability.
     Boxes with limited hp.
     Extra: Assigning a profile to the character and updating its
-    outlook when the character turns to another direction.
+    outlook when the character turns to another direction.✓
     Extra: Shooting. 

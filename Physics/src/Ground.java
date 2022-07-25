@@ -10,7 +10,8 @@ import java.awt.geom.AffineTransform;
 public class Ground extends JPanel{
     Hero myHero;
     private double imageAngleRad = 0;
-    protected final int JUMP = 50;
+    protected final int JUMP = 5;
+    protected int acceleration=3;
     public static void main(String[] args) {
         JFrame myFrame = new JFrame("Fire & Fire");
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,23 +47,25 @@ public class Ground extends JPanel{
         public void keyPressed(KeyEvent event) {
             switch (event.getKeyCode()) {
                 case KeyEvent.VK_UP:
-                    //myGround.myHero.currentImage = myGround.myHero.up;
-                    myGround.myHero.y -= JUMP;
+                    acceleration +=3; 
+                    myGround.myHero.y -=JUMP;//acceleration;
                     repaint();
                     break;
                 case KeyEvent.VK_DOWN:
-                    //myHero.currentImage = myHero.down;
-                    myHero.y += JUMP;
+                    myGround.myHero.y += JUMP;
+                    repaint();
                     break;
                 case KeyEvent.VK_LEFT:
-                    //myHero.currentImage = myHero.left;
-                    myHero.x -= JUMP;
+                    myGround.myHero.x -= JUMP;
+                    repaint();
                     break;
                 case KeyEvent.VK_RIGHT:
-                    //myHero.currentImage = myHero.right;
-                    myHero.x += JUMP;
+                    myGround.myHero.x += JUMP;
+                    repaint();
+                    
                     break;
             }
+            acceleration = JUMP;
             repaint();
         }
         public void keyTyped(KeyEvent e) {}
