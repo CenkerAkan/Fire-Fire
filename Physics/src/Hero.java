@@ -24,6 +24,8 @@ public class Hero extends JPanel{
     private final int STARTING_ORDINATE =0;
     protected int x= STARTING_APSIS;
     protected int y= STARTING_ORDINATE;
+    protected int gunsX = STARTING_APSIS+63;
+    protected int gunsY = STARTING_ORDINATE-37;
     protected BufferedImage currentImage;
     protected static BufferedImage up;
     protected static BufferedImage down;
@@ -31,7 +33,7 @@ public class Hero extends JPanel{
     protected static BufferedImage right;
     public Hero(){
         ImagePanel();
-        currentImage = down;
+        currentImage = right;
         setPreferredSize (new Dimension(63,46));
     }
     public void setNewLocation(int newX, int newY){

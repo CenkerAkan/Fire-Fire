@@ -3,11 +3,13 @@ import javax.swing.event.MouseInputListener;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
 /**
  * Main map of the game
  */
 public class Ground extends JPanel{
     Hero myHero;
+    private double imageAngleRad = 0;
     protected final int JUMP = 50;
     public static void main(String[] args) {
         JFrame myFrame = new JFrame("Fire & Fire");
@@ -27,7 +29,7 @@ public class Ground extends JPanel{
         this.setPreferredSize(new Dimension(2048,1080));
         //this.setLayout(new BorderLayout());
         //this.createComponents();
-        myHero.setNewLocation(1000, 500);
+        myHero.setNewLocation(1500,1000);
         setFocusable(true);
     }
     public void createComponents(){
@@ -73,13 +75,30 @@ public class Ground extends JPanel{
             
         }
         public void mouseMoved(MouseEvent e) {
-            System.out.println("Mouse is moved to x:"+e.getXOnScreen()+" y:"+e.getYOnScreen());   
+            double dx = e.getX() - (myHero.x+63);//according to the gun
+            double dy = e.getY() - (myHero.y+37);
+            imageAngleRad = Math.atan2(dy, dx);
+            repaint();
         }
         public void mouseDragged(MouseEvent e){}
     }
     
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(myHero.currentImage, myHero.x, myHero.y, this); // see javadoc for more info on the parameters            
+    protected void paintComponent(Graphics gr) {
+        //super.paintComponent(g);
+        //g.drawImage(myHero.currentImage, myHero.x, myHero.y, this); // see javadoc for more info on the parameters            
+        super.paintComponent(gr);
+        Graphics2D g = (Graphics2D)gr;
+        g.setRenderingHint(
+            RenderingHints.KEY_RENDERING, 
+            RenderingHints.VALUE_RENDER_QUALITY);
+
+        int cx = myHero.currentImage.getWidth() / 2;
+        int cy = myHero.currentImage.getHeight() / 2;
+        AffineTransform oldAT = g.getTransform();
+        g.translate(cx+(myHero.x), cy+(myHero.y));
+        g.rotate(imageAngleRad);
+        g.translate(-cx, -cy);
+        g.drawImage(myHero.currentImage, 0, 0, null);
+        g.setTransform(oldAT);
     }
 }
