@@ -1,30 +1,21 @@
-package ProgramFrames;
-
-
-import java.awt.Desktop;
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-//import NextJFrame;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package ProgramFrames;
+
+import java.awt.event.WindowEvent;
 
 /**
  *
  * @author MEHMETAKAN
  */
-public class OpeningFrame extends javax.swing.JFrame {
+public class NewOpeningJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form OpeningFrame
+     * Creates new form NewOpeningJFrame
      */
-    public OpeningFrame() {
+    public NewOpeningJFrame() {
         initComponents();
     }
 
@@ -51,7 +42,6 @@ public class OpeningFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -116,12 +106,30 @@ public class OpeningFrame extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -60, 720, 670));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(800, 430, 590, 520);
-
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\MEHMETAKAN\\Desktop\\logMain.PNG")); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 1790, 1160);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1790, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(800, 800, 800)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(430, 430, 430)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 18, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,10 +146,6 @@ public class OpeningFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String password = jPasswordField1.getText();
         String username = jTextField1.getText();
@@ -149,14 +153,12 @@ public class OpeningFrame extends javax.swing.JFrame {
             jPasswordField1.setText(null);
             jTextField1.setText(null);
             systemExit();
-            NextJFrame nextPage = new NextJFrame();
-            nextPage.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
-            jPasswordField1.setText(null);
-            jTextField1.setText(null);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,24 +177,26 @@ public class OpeningFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OpeningFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewOpeningJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OpeningFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewOpeningJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OpeningFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewOpeningJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OpeningFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewOpeningJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        JFrame myFrame = new OpeningFrame();
-        myFrame.setVisible(true);
-        myFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
- 
+                new NewOpeningJFrame().setVisible(true);
             }
         });
+    }
+        private void systemExit(){
+        
+        WindowEvent winCloseing = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,9 +213,4 @@ public class OpeningFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
-    
-    private void systemExit(){
-        
-        WindowEvent winCloseing = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
-    }
 }
