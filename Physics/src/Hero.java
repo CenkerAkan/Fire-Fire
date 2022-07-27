@@ -24,17 +24,25 @@ public class Hero extends JPanel{
     private final int STARTING_ORDINATE =0;
     protected double x= STARTING_APSIS;
     protected double y= STARTING_ORDINATE;
-    protected double velX = 0;
-    protected double velY =0;
+    protected double gunX = x+67;
+    protected double gunY = y+37;  
+    // attack modes
+    protected final int MELEE  = 101;
+    protected final int HANDGUN  = 102;
+    protected final int RIFLE  = 103;
+    protected int currentWeapon=HANDGUN;
+
+    // images
     protected BufferedImage currentImage;
-    protected static BufferedImage up;
-    protected static BufferedImage down;
-    protected static BufferedImage left;
     protected static BufferedImage right;
+    protected static BufferedImage knife;
+    protected static BufferedImage rifle;
+    //
+    
     public Hero(){
+        setPreferredSize (new Dimension(63,46));
         ImagePanel();
         currentImage = right;
-        setPreferredSize (new Dimension(63,46));
     }
     public void setNewLocation(int newX, int newY){
         x=newX;
@@ -46,14 +54,30 @@ public class Hero extends JPanel{
         super.paintComponent(g);
         g.drawImage(currentImage, 0, 0, this); // see javadoc for more info on the parameters            
     }
+    public void changeAttackMode(int attackMode){
+        if(currentWeapon!=attackMode){
+            if(attackMode==MELEE){
+                currentImage = knife;
+                currentWeapon=MELEE;
+            }else if(attackMode==HANDGUN){
+                currentImage = right;
+                currentWeapon=HANDGUN;
+            }else if (attackMode==RIFLE){
+                currentImage = rifle;
+                currentWeapon=RIFLE;
+            }
+        }
+    }
     public void ImagePanel() {
-        try {                
-           up = ImageIO.read(new File("up.png"));
-           down = ImageIO.read(new File("down.png"));
-           left = ImageIO.read(new File("left.png"));
-           right = ImageIO.read(new File("right.png"));
+        try {
+            knife = ImageIO.read(new File("melee.png"));
+            right = ImageIO.read(new File("right.png"));
+            rifle = ImageIO.read(new File("rifle.png"));
         } catch (IOException ex) {
             System.out.println("Problem in image paths");
         }
-     }
+    }
+    public void shoot(double mouseX, double mouseY){
+
+    }
 }

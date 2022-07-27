@@ -7,7 +7,7 @@ Things to do in main:
 
 Things to do in physics:
     Movement of the character object. ✓
-    Need smooth movement
+    Need smooth movement ✓: moves smoother but without improving physics. 
     Meelee attack ability.
     Boxes with limited hp.
     Extra: Assigning a profile to the character and updating its
