@@ -1,0 +1,82 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "fireandfire",
+            "username": "sqluser",
+            "name": "sql connection",
+            "password": "cda2ocRW"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "sql connection",
+            "database": "fireandfire",
+            "username": "admin",
+            "password": "cda2ocRW"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "username": "sqluser",
+            "database": "fireandfire",
+            "name": "sql connection",
+            "password": "cda2ocRW"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "sql connection",
+            "database": "fireandfire",
+            "username": "sqluser",
+            "password": "cda2ocRW"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "mysql connection",
+            "database": "fireandfire",
+            "username": "sqluser",
+            "password": "cda2ocRW"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "mysql db",
+            "username": "root",
+            "database": "fireandfire",
+            "password": "password"
+        }
+    ]
+}
