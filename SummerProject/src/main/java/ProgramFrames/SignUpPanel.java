@@ -4,6 +4,15 @@
  */
 package ProgramFrames;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 /**
@@ -11,13 +20,31 @@ import javax.swing.JPanel;
  * @author MEHMETAKAN
  */
 public class SignUpPanel extends javax.swing.JPanel {
-    NewMainFrame mainFrame; 
+    NewMainFrame mainFrame;
+    Connection myconnection;
     /**
      * Creates new form SignUpPanel
      */
     public SignUpPanel(NewMainFrame newMainFrame) {
         mainFrame = newMainFrame;
         initComponents();
+        jPasswordField1.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                jPasswordField1.setText("");
+            }
+        });
+        // DATABASE CONNECTION
+        String url = "jdbc:mysql://localhost:3306/fireandfire";
+        String username = "sqluser";
+        String password = "password";
+        try {
+            myconnection = DriverManager.getConnection(url,username,password);
+        } catch (SQLException ex) {
+            //Logger.getLogger(SignUpPanel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            System.out.println(" CONNECTION FAILURE");
+        }
         
     }
 
@@ -106,6 +133,21 @@ public class SignUpPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // database methods
+        String signUp = "INSERT INTO userData(Username,Passwords) VALUES(?,?)";
+        try {
+            PreparedStatement statement = myconnection.prepareStatement(signUp);
+            statement.setString(1, jTextField1.getText());
+            statement.setString(2, jPasswordField1.getText());
+            int rows = statement.executeUpdate();
+            if(rows>0){
+                System.out.println("a row has been inserted.");
+            }
+            System.out.println("ProgramFrames.SignUpPanel.jButton1ActionPerformed()");
+            statement.close();
+            myconnection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SignUpPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

@@ -6,6 +6,9 @@ package ProgramFrames;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 
 /**
@@ -31,8 +34,8 @@ public class NewMainFrame extends javax.swing.JFrame {
         int width =(int) dim.getWidth();
         openingPanel.setSize(width,height);
         openingPanel.setLocation(width/2-getWidth()/2,height/2-getHeight()/2);
-        
-        // centering the components
+        // database init 
+
 
     }
     public void addOpeningPanel(){

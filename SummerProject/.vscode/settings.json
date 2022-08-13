@@ -78,5 +78,6 @@
             "database": "fireandfire",
             "password": "password"
         }
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
