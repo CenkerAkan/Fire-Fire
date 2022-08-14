@@ -11,6 +11,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -19,7 +26,7 @@ import javax.swing.JOptionPane;
  * @author MEHMETAKAN
  */
 public class NewOpeningJPanel extends javax.swing.JPanel {
-   
+   Connection myconnection;
    NewMainFrame mainFrame;
     /**
      * Creates new form NewOpeningJPanel
@@ -33,6 +40,17 @@ public class NewOpeningJPanel extends javax.swing.JPanel {
                 jPasswordField1.setText("");
             }
         });
+        //DATABASE INIT
+        String url = "jdbc:mysql://localhost:3306/fireandfire";
+        String username = "sqluser";
+        String password = "password";
+        try {
+            myconnection = DriverManager.getConnection(url,username,password);
+        } catch (SQLException ex) {
+            //Logger.getLogger(SignUpPanel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            System.out.println(" CONNECTION FAILURE");
+        }
     }
     public void arranger(){
         
@@ -137,23 +155,41 @@ public class NewOpeningJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        boolean invalidLogin = true;
         String password = jPasswordField1.getText();
         String username = jTextField1.getText();
-        if(password.equals("123")&&username.equals("asd")){ // DATABASE METHODS ARE NEEDED
-            jPasswordField1.setText(null);
-            jTextField1.setText(null);
-            mainFrame.moveToGameLobby();
-            //systemExit();
-            //NextJFrame nextPage = new NextJFrame();
-            //nextPage.setVisible(true);
-        }else{
+        String sql ="SELECT *FROM userData ";
+       try {
+           Statement statement = myconnection.createStatement();
+           ResultSet result = statement.executeQuery(sql);
+           while(result.next()){
+            if(username.equals(result.getString("Username"))&&password.equals(result.getString("Passwords"))){
+               jPasswordField1.setText(null);
+               jTextField1.setText(null);
+               invalidLogin=false;
+               //myconnection.close();
+               mainFrame.moveToGameLobby();
+              }   
+           }
+           if(invalidLogin){
+               JOptionPane.showMessageDialog(null, "Invalid Login Details err code: 02","Login Error",JOptionPane.ERROR_MESSAGE);
+               jPasswordField1.setText(null);
+               jTextField1.setText(null);   
+           }
+       } catch (SQLException ex) {
+           //Logger.getLogger(NewOpeningJPanel.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Invalid Login Details","Login Error",JOptionPane.ERROR_MESSAGE);
             jPasswordField1.setText(null);
             jTextField1.setText(null);
-        }
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       try {
+           myconnection.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(NewOpeningJPanel.class.getName()).log(Level.SEVERE, null, ex);
+       }
         System.exit(0);
     }//GEN-LAST:event_jButton3ActionPerformed
 
