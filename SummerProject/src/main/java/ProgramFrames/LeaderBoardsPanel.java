@@ -4,22 +4,57 @@
  */
 package ProgramFrames;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MEHMETAKAN
  */
 public class LeaderBoardsPanel extends javax.swing.JPanel {
     NewMainFrame mainFrame;
+    Connection myconnection;
     /**
      * Creates new form LeaderBoardsPanel
      */
     public LeaderBoardsPanel(NewMainFrame newMainFrame) {
         initComponents();
         mainFrame = newMainFrame;
-        
+        jTextArea1.setEditable(false);
+        //DATABSE INIT
+        String url = "jdbc:mysql://localhost:3306/fireandfire";
+        String username = "sqluser";
+        String password = "password";
+        try {
+            myconnection = DriverManager.getConnection(url,username,password);
+            showLeaderBoardsPage();
+        } catch (SQLException ex) {
+            //Logger.getLogger(SignUpPanel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            System.out.println(" CONNECTION FAILURE");
+        }        
     }
-    public void showLeaderBoards(){
-        
+    public void showLeaderBoardsPage(){
+        String sql ="SELECT * FROM userData ORDER BY userData.Score DESC , userId LIMIT 5;";
+               try {
+           Statement statement = myconnection.createStatement();
+           ResultSet result = statement.executeQuery(sql);
+           String lead ="";
+           while(result.next()){ // NEED A MORE EFFICIENT MECHANISM
+               //int scores = result.getInt(lead)
+               lead+= result.getString("Username")+"   ************>"+result.getInt("Score")+"\n";// FORMATTING IS NEEDED
+               System.out.println(lead);
+           }
+           jTextArea1.setText(lead);
+       } catch (SQLException ex) {
+           Logger.getLogger(NewOpeningJPanel.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +87,11 @@ public class LeaderBoardsPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("REFRESH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,6 +131,11 @@ public class LeaderBoardsPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         mainFrame.addOpeningPanel();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        showLeaderBoardsPage();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
