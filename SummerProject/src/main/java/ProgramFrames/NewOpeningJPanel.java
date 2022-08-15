@@ -162,7 +162,7 @@ public class NewOpeningJPanel extends javax.swing.JPanel {
        try {
            Statement statement = myconnection.createStatement();
            ResultSet result = statement.executeQuery(sql);
-           while(result.next()){
+           while(result.next()){ // NEED A MORE EFFICIENT MECHANISM
             if(username.equals(result.getString("Username"))&&password.equals(result.getString("Passwords"))){
                jPasswordField1.setText(null);
                jTextField1.setText(null);
