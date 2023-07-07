@@ -1,4 +1,6 @@
-//package SummerProject.src.main.java.com.example;
+package com.example;
+
+//package Summer.src.main.java.com.example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,4 +1,6 @@
-package SummerProject.src.test.java.com.example;
+package com.example;
+
+//package SummerProject.src.test.java.com.example;
 
 //import static org.junit.Assert.assertTrue;
 
